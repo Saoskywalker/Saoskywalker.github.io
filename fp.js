@@ -26,7 +26,9 @@
         err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
       }
       var REMOTE_PACKAGE_NAME = Module['locateFile'] ? Module['locateFile'](REMOTE_PACKAGE_BASE, '') : REMOTE_PACKAGE_BASE;
-var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
+
+      var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
+      var PACKAGE_UUID = metadata['package_uuid'];
 
       function fetchRemotePackage(packageName, packageSize, callback, errback) {
         if (typeof process === 'object' && typeof process.versions === 'object' && typeof process.versions.node === 'string') {
@@ -143,7 +145,7 @@ Module['FS_createPath']("/", "MTF", true, true);
 
       function processPackageData(arrayBuffer) {
         assert(arrayBuffer, 'Loading data file failed.');
-        assert(arrayBuffer.constructor.name === ArrayBuffer.name, 'bad input to processPackageData');
+        assert(arrayBuffer instanceof ArrayBuffer, 'bad input to processPackageData');
         var byteArray = new Uint8Array(arrayBuffer);
         var curr;
         // Reuse the bytearray from the XHR as the source for file reads.
@@ -175,6 +177,6 @@ Module['FS_createPath']("/", "MTF", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/MTF/0.gif", "start": 0, "end": 62922}, {"filename": "/MTF/1.gif", "start": 62922, "end": 75431}, {"filename": "/MTF/10.gif", "start": 75431, "end": 646747}, {"filename": "/MTF/101.png", "start": 646747, "end": 1649342}, {"filename": "/MTF/12.png", "start": 1649342, "end": 1704517}, {"filename": "/MTF/120.wav", "start": 1704517, "end": 54335211, "audio": 1}, {"filename": "/MTF/2.gif", "start": 54335211, "end": 54603445}, {"filename": "/MTF/3.gif", "start": 54603445, "end": 54737511}, {"filename": "/MTF/4.gif", "start": 54737511, "end": 54949300}, {"filename": "/MTF/5.gif", "start": 54949300, "end": 54961816}, {"filename": "/MTF/8.png", "start": 54961816, "end": 54984701}, {"filename": "/MTF/9.png", "start": 54984701, "end": 55007667}, {"filename": "/MTF/HMIConfig.json", "start": 55007667, "end": 55009457}, {"filename": "/MTF/cfg.json", "start": 55009457, "end": 55010074}, {"filename": "/MTF/logo", "start": 55010074, "end": 55062703}, {"filename": "/MTF/logo.gif", "start": 55062703, "end": 55115332}, {"filename": "/MTF/project_ico.png", "start": 55115332, "end": 55133586}], "remote_package_size": 55133586});
+    loadPackage({"files": [{"filename": "/MTF/0.gif", "start": 0, "end": 36343}, {"filename": "/MTF/1.gif", "start": 36343, "end": 48191}, {"filename": "/MTF/12.png", "start": 48191, "end": 85262}, {"filename": "/MTF/120.mp3", "start": 85262, "end": 3278412, "audio": 1}, {"filename": "/MTF/13.gif", "start": 3278412, "end": 3331041}, {"filename": "/MTF/2.gif", "start": 3331041, "end": 3599275}, {"filename": "/MTF/2.mp3", "start": 3599275, "end": 7650841, "audio": 1}, {"filename": "/MTF/23.gif", "start": 7650841, "end": 7703470}, {"filename": "/MTF/25.png", "start": 7703470, "end": 7711389}, {"filename": "/MTF/26.png", "start": 7711389, "end": 7720531}, {"filename": "/MTF/27.png", "start": 7720531, "end": 7729571}, {"filename": "/MTF/28.png", "start": 7729571, "end": 7738734}, {"filename": "/MTF/3.gif", "start": 7738734, "end": 7872800}, {"filename": "/MTF/3.mp3", "start": 7872800, "end": 10729298, "audio": 1}, {"filename": "/MTF/4.gif", "start": 10729298, "end": 10941044}, {"filename": "/MTF/5.gif", "start": 10941044, "end": 10952903}, {"filename": "/MTF/6.gif", "start": 10952903, "end": 11085823}, {"filename": "/MTF/7.gif", "start": 11085823, "end": 11223914}, {"filename": "/MTF/8.png", "start": 11223914, "end": 11246799}, {"filename": "/MTF/9.png", "start": 11246799, "end": 11269765}, {"filename": "/MTF/cfg.json", "start": 11269765, "end": 11270382}, {"filename": "/MTF/HMIConfig.json", "start": 11270382, "end": 11274192}, {"filename": "/MTF/logo", "start": 11274192, "end": 11326821}], "remote_package_size": 11326821, "package_uuid": "fa1dba62-05c1-45c8-83ee-e90b903f93e8"});
 
   })();
